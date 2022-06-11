@@ -3,7 +3,9 @@ const app = express()
 const MongoClient = require('mongodb').MongoClient
 const PORT = 2121
 require('dotenv').config()
+const cors = require('cors')
 
+app.use(cors())
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -21,7 +23,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-app.get('/',(request, response)=>{
+app.get('/',(request, response) => {
+    db.collection('cats').find().toArray()
+    .then(data => {
+        response.render('index.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+
 })
 
 app.post('/...', (request, response) => {
