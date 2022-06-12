@@ -12,17 +12,40 @@
 <body>
     <header>
         <nav class="header-navbar">
-            <ul class="header-ul">
-                <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/pets_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Feed</p></a></li>
+            <% if (currentUser) {%>
+                <ul class="header-ul">
+                    <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/pets_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Feed</p></a></li>
 
-                <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/explore_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Explore</p></a></li>
+                    <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/explore_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Explore</p></a></li>
 
-                <li class="header-li active"><a href="#" class="active"><img src="assets/nav_icons/photo_camera_FILL1_wght400_GRAD0_opsz48-blue.svg" alt="" class="nav-icon"><p>Spot</p></a></li>
+                    <li class="header-li active"><a href="#" class="active"><img src="assets/nav_icons/photo_camera_FILL1_wght400_GRAD0_opsz48-blue.svg" alt="" class="nav-icon"><p>Spot</p></a></li>
 
-                <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/groups_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Clusters</p></a></li>
+                    <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/groups_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Clusters</p></a></li>
 
-                <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/account_circle_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Profile</p></a></li>
-            </ul>
+                    <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/account_circle_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Profile</p></a><a href="/log-out">LOG OUT</a></li>
+                </ul>
+            <% } else { %>
+                <div class="login">
+                    <h3>Log in</h3>
+                    <form action="/log-in" method="POST">
+                        <label for="username">Username</label>
+                        <input name="username" placeholder="username" type="text" required>
+                        <label for="password">Password</label>
+                        <input name="password" type="password" required>
+                        <button>Log In</button>
+                    </form>
+                </div>
+                <div class="signup">
+                    <h3>Sign Up</h3>
+                    <form action="/sign-up" method="POST">
+                      <label for="username">Username</label>
+                      <input name="username" placeholder="username" type="text" required>
+                      <label for="password">Password</label>
+                      <input name="password" type="password" required>
+                      <button>Sign Up</button>
+                    </form>
+                </div>
+            <%}%>
         </nav>
     </header>
     <main>
