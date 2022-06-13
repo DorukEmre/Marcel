@@ -83,15 +83,15 @@ select {
   General styling
   /////////////////////// */
 :root {
-  --clr-back-300: #13212F;
+  --clr-back-300: #13212F; /* hsl(210, 42%, 13%) */
   --clr-back-400: #20303F; /* hsl(209, 33%, 19%) */
   
-  --clr-accent-300: #8ab7ff;
-  --clr-accent-400: #6889BD;
+  --clr-accent-300: #8ab7ff; /* hsl(217, 100%, 77%) */
+  --clr-accent-400: #82a1d4; /* hsl(217, 49%, 67%) */
   
-  --clr-neutral-300: #d6e6ff;
-  --clr-neutral-400: #a2b7cd;
-  --clr-neutral-600: #546a83;  
+  --clr-neutral-300: #d6e6ff; /* hsl(217, 100%, 92%) */
+  --clr-neutral-400: #a2b7cd; /* hsl(211, 30%, 72%) */
+  --clr-neutral-600: #546a83; /* hsl(212, 22%, 42%) */
   
   --ff-body: "Roboto", sans-serif;
 }
@@ -160,9 +160,11 @@ body {
 }
 .header-li.login:hover a {
   color: var(--clr-accent-400);
+  transition-duration: 0.2s;
 }
 .header-li.signup:hover a {
-  background-color: var(--clr-accent-400);  
+  background-color: var(--clr-accent-400); 
+  transition-duration: 0.2s; 
 }
 
 .header-li.active {
@@ -283,6 +285,7 @@ h1 > span {
   padding: 0.5rem 1rem;
   width: 100%;
   cursor: pointer;
+  transition-duration: 0.2s;
 }
 .login-panel button:hover,
 .signup-panel button:hover {
