@@ -90,6 +90,8 @@ app.get('/',(request, response) => {
     })
     .catch(error => console.error(error))
 })
+app.get("/login", (req, res) => res.render("login"));
+app.get("/signup", (req, res) => res.render("signup"));
 app.get("/log-out", (req, res) => {
     req.logout(function (err) {
       if (err) {
@@ -99,7 +101,7 @@ app.get("/log-out", (req, res) => {
     });
 });
 
-app.post("/sign-up", (req, res, next) => {
+app.post("/signup", (req, res, next) => {
     bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
         // if err, do something
         // otherwise, store hashedPassword in DB
@@ -119,7 +121,7 @@ app.post("/sign-up", (req, res, next) => {
 });
 
 app.post(
-    "/log-in",
+    "/login",
     passport.authenticate("local", {
       successRedirect: "/",
       failureRedirect: "/"

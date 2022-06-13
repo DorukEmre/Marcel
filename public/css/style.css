@@ -186,16 +186,105 @@ h1 > span {
   align-items: center;
   justify-content: space-around;
   max-width: 72rem;
-  height: 85vh;
+  height: calc(85vh-60px);
   gap: 1em;
   margin: 0 auto;
   padding: 1rem 3rem;
 }
 .hero-image-container {
   flex: 1 0 50%;
-  max-height: 80vh;
+  max-height: 90%;
 }
 .hero-title-container {
   flex: 0 0 324px;
   max-width: 100%;
+}
+
+
+/* ////////////////////// */
+/*   Log-in and Sign-up   */
+/* ////////////////////// */
+.login-container,
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 430px;
+  margin: 0 auto;
+  padding-top: 4rem;
+  text-align: center;
+}
+.login-logo-container,
+.signup-logo-container {
+  height: 100px;
+  margin: 0 0 3rem;
+}
+.login-logo-container img,
+.signup-logo-container img {
+  max-height: 100%;
+  margin: 0 auto;
+}
+.login-panel,
+.signup-panel {
+  background-color: var(--clr-back-400);
+  border-radius: 8px;
+  padding: 2rem 2rem 1.5rem;
+}
+.login-panel h1,
+.signup-panel h1 {
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.login-panel form,
+.signup-panel form {
+  padding-bottom: 2rem;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {  
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 5px;  
+}
+.form-group input {
+  height: 44px;
+  box-shadow: inset 0 1px 2px var(--clr-neutral-600);
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid var(--clr-neutral-300);
+  border-radius: 4px;
+  background-color: var(--clr-back-400);
+  color: var(--clr-neutral-300);
+}
+.form-group input::placeholder,
+.form-group input::placeholder {
+
+}
+.form-group input:focus {  
+  border: 2px solid var(--clr-accent-300);
+  outline: 0;
+  /* box-shadow: inset 0 1px 2px rgba(203,203,210,0.2),0 0 4px rgba(121,88,159,0.3); */
+}
+.login-panel button,
+.signup-panel button {  
+  color: var(--clr-back-400);
+  background-color: var(--clr-accent-300);
+  font-size: 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+.login-panel button:hover,
+.signup-panel button:hover {
+  background-color: var(--clr-neutral-600);
+}
+.login-panel a,
+.signup-panel a {
+  color: var(--clr-accent-300);
 }
