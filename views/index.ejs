@@ -25,26 +25,10 @@
                     <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/account_circle_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Profile</p></a><a href="/log-out">LOG OUT</a></li>
                 </ul>
             <% } else { %>
-                <div class="login">
-                    <h3>Log in</h3>
-                    <form action="/log-in" method="POST">
-                        <label for="username">Username</label>
-                        <input name="username" placeholder="username" type="text" required>
-                        <label for="password">Password</label>
-                        <input name="password" type="password" required>
-                        <button>Log In</button>
-                    </form>
-                </div>
-                <div class="signup">
-                    <h3>Sign Up</h3>
-                    <form action="/sign-up" method="POST">
-                      <label for="username">Username</label>
-                      <input name="username" placeholder="username" type="text" required>
-                      <label for="password">Password</label>
-                      <input name="password" type="password" required>
-                      <button>Sign Up</button>
-                    </form>
-                </div>
+                <ul class="header-ul new-session">
+                    <li class="header-li login"><a href="#" class="">Log in</a></li>
+                    <li class="header-li signup"><a href="#" class="">Sign up</a></li>
+                </ul>
             <%}%>
         </nav>
     </header>

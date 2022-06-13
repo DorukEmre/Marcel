@@ -113,9 +113,11 @@ body {
 .header-ul {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   list-style: none;
   gap: 1em;
   max-width: 48rem;
+  min-height: 60px;
   padding: 0 32px;
   margin: 0 auto;
 }
@@ -124,6 +126,7 @@ body {
   max-width: calc(100% - 65px);
   flex-grow: 1;  
   padding-top: 8px;
+  text-align:center;
 }
 .header-navbar a {
   text-decoration: none;
@@ -135,6 +138,24 @@ body {
 }
 .nav-icon {
   margin: 0 auto;
+}
+.header-ul.new-session {
+  justify-content: flex-end;
+}
+.header-li.login,
+.header-li.signup {
+  max-width: 80px;
+  padding-top: 0px;
+}
+.header-li.login a {
+  color: var(--clr-accent-300);
+  padding: 10px;
+}
+.header-li.signup a {
+  color: var(--clr-back-300);
+  background-color: var(--clr-accent-300);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .header-li.active {
