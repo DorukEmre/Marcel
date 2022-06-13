@@ -1,38 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcel</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <script src='js/main.js' defer></script>
+    <%- include('partials/head.ejs') %>
+    <title>Marcel The Outdoor Cat</title>
 </head>
 <body>
     <header>
-        <nav class="header-navbar">
-            <% if (currentUser) {%>
-                <ul class="header-ul">
-                    <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/pets_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Feed</p></a></li>
-
-                    <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/explore_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Explore</p></a></li>
-
-                    <li class="header-li active"><a href="#" class="active"><img src="assets/nav_icons/photo_camera_FILL1_wght400_GRAD0_opsz48-blue.svg" alt="" class="nav-icon"><p>Spot</p></a></li>
-
-                    <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/groups_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Clusters</p></a></li>
-
-                    <li class="header-li"><a href="#" class=""><img src="assets/nav_icons/account_circle_FILL1_wght400_GRAD0_opsz48-mid.svg" alt="" class="nav-icon"><p>Profile</p></a><a href="/log-out">LOG OUT</a></li>
-                </ul>
-            <% } else { %>
-                <ul class="header-ul new-session">
-                    <li class="header-li login"><a href="/login" class="">Log in</a></li>
-                    <li class="header-li signup"><a href="/signup" class="">Sign up</a></li>
-                </ul>
-            <%}%>
-        </nav>
+        <%- include('partials/header.ejs') %>        
     </header>
-    <main>
+
+    <main class="homepage-main">
         <section class="hero-container">
             <div class="hero-title-container">
                 <h1>Marcel <span>the outdoor cat</span></h1>
@@ -42,9 +19,9 @@
             </div>
         </section>
     </main>
+
     <footer>
-
+        <%- include('partials/footer.ejs') %>
     </footer>
-
 </body>
 </html>
