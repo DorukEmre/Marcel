@@ -98,9 +98,11 @@ select {
 
 
 body {
-    background-color: var(--clr-back-300);
-    color: var(--clr-neutral-300);
-    font-family: var(--ff-body);
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--clr-back-300);
+  color: var(--clr-neutral-300);
+  font-family: var(--ff-body);
 }
 
 /* ////////// */
@@ -110,6 +112,7 @@ body {
 .header-navbar {
   background-color: var(--clr-back-400);
   width: 100vw;
+  height: 91px;
 }
 .header-ul {
   display: flex;
@@ -118,7 +121,7 @@ body {
   list-style: none;
   gap: 1em;
   max-width: 48rem;
-  min-height: 60px;
+  height: 100%;
   padding: 0 32px;
   margin: 0 auto;
 }
@@ -166,47 +169,64 @@ body {
   background-color: var(--clr-accent-400); 
   transition-duration: 0.2s; 
 }
-
+.header-li.logout {
+  width: 20px;
+  min-width: 20px;
+  flex-grow: 0;
+}
+.logout-link {
+  display: inline-block;
+  height: 100%;
+}
 .header-li.active {
   border-bottom: 3px solid var(--clr-accent-300);
 }
 .header-navbar a.active {
   color: var(--clr-accent-300);
 }
+
 /* ////////// */
 /*   Main   */
 /* ////////// */
-
-h1 {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  color: var(--clr-accent-300);
-  /* margin: 0 auto; */
-}
-h1 > span {
-  display: block;
-  color: var(--clr-neutral-300);
-  padding-left: 2rem;
+main {
+  padding-bottom: 2.5rem;
 }
 
+.homepage-main {
+  height: calc(100vh - 91px - 2.5rem);
+}
 .hero-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   max-width: 72rem;
-  height: calc(85vh-60px);
   gap: 1em;
   margin: 0 auto;
   padding: 1rem 3rem;
 }
 .hero-image-container {
-  flex: 1 0 50%;
-  max-height: 90%;
+  flex: 1 1 35%;
+  overflow: hidden;
+  max-height: calc(100vh - 2rem - 91px - 2.5rem);
+}
+.hero-image-container img{
+  /* max-height: 100%; */
 }
 .hero-title-container {
   flex: 0 0 324px;
   max-width: 100%;
+}
+.hero-title-container h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: var(--clr-accent-300);
+  /* margin: 0 auto; */
+}
+.hero-title-container h1 > span {
+  display: block;
+  color: var(--clr-neutral-300);
+  padding-left: 2rem;
 }
 
 
@@ -224,7 +244,7 @@ h1 > span {
 }
 .login-logo-container,
 .signup-logo-container {
-  height: 100px;
+  height: 150px;
   margin: 0 0 3rem;
 }
 .login-logo-container img,
@@ -294,4 +314,19 @@ h1 > span {
 .login-panel a,
 .signup-panel a {
   color: var(--clr-accent-300);
+}
+
+/* ////////// */
+/*   Footer   */
+/* ////////// */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+}
+footer p {
+  font-size: 0.8rem;
+  vertical-align: middle;
 }
