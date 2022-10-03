@@ -26,7 +26,7 @@ Cat
     pictures -
         picIDs (string)
 
-Picture
+Post
     picID (string)
     pic_userID (string) [owner]
     pic_catID (string)

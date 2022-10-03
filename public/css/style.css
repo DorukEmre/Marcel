@@ -246,7 +246,7 @@ main {
   display: flex;
   flex-direction: column;
   max-width: 430px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   padding-top: 4rem;
   text-align: center;
 }

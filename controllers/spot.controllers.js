@@ -4,9 +4,9 @@
 // const Cat = require("../models/Cat.model");
 
 module.exports = {
-  getFeed: (req, res) => {
-    const active = ['active','mid','mid','mid','mid']
-    res.render("feed.ejs", { active });
+  getSpot: (req, res) => {
+    const active = ['mid','mid','active','mid','mid']
+    res.render("spot.ejs", { active });
   },
   // getFeed: async (req, res) => {
   //   try {

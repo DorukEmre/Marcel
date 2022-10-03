@@ -1,6 +1,7 @@
 module.exports = {
   getIndex: (req, res) => {
-    res.render("index.ejs");
+    const active = ['mid','mid','mid','mid','mid']    
+    res.render("index.ejs", { active });
   },
 };
 
