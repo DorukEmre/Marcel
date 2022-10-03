@@ -90,6 +90,10 @@ select {
   --clr-back-300: #13212F; /* hsl(210, 42%, 13%) */
   --clr-back-400: #20303F; /* hsl(209, 33%, 19%) */
   
+  --clr-compl-300: #48351A; /* hsl(210, 42%, 13%) */
+  --clr-compl-400: #624d2d; /* hsl(36, 37%, 28%) */
+  --clr-compl-450: #ffc670; /* hsl(36, 100%, 72%) */
+  
   --clr-accent-300: #8ab7ff; /* hsl(217, 100%, 77%) */
   --clr-accent-400: #82a1d4; /* hsl(217, 49%, 67%) */
   
@@ -318,6 +322,10 @@ main {
 .login-panel a,
 .signup-panel a {
   color: var(--clr-accent-300);
+}
+
+.alert {
+  color: var(--clr-compl-450);;
 }
 
 /* ////////// */
