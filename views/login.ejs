@@ -16,12 +16,12 @@
                 <h1>Log in to Marcel</h1>
                 <% if (locals.messages.errors) { %> 
                   <% messages.errors.forEach( el => { %>
-                    <div class="alert alert-danger"><%= el.msg %></div>
+                    <p class="alert alert-danger"><%= el.msg %></p>
                   <% }) %>
                 <% } %> 
                 <% if (locals.messages.info) { %> 
                   <% messages.info.forEach( el => { %>
-                    <div class="alert alert-info"><%= el.msg %></div>
+                    <p class="alert alert-info"><%= el.msg %></p>
                   <% }) %> 
                 <% } %>
                 <form action="/login" method="POST">

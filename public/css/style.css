@@ -92,7 +92,7 @@ select {
   
   --clr-compl-300: #48351A; /* hsl(210, 42%, 13%) */
   --clr-compl-400: #624d2d; /* hsl(36, 37%, 28%) */
-  --clr-compl-450: #ffc670; /* hsl(36, 100%, 72%) */
+  --clr-compl-450: #f59300; /* hsl(36, 100%, 48%) */
   
   --clr-accent-300: #8ab7ff; /* hsl(217, 100%, 77%) */
   --clr-accent-400: #82a1d4; /* hsl(217, 49%, 67%) */
@@ -325,7 +325,8 @@ main {
 }
 
 .alert {
-  color: var(--clr-compl-450);;
+  color: var(--clr-compl-450);
+  padding-bottom: 1.5rem;
 }
 
 /* ////////// */
