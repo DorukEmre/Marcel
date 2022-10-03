@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 /* //////////////////////
   RESET - source: https://piccalil.li/blog/a-modern-css-reset
   /////////////////////// */
@@ -82,6 +84,8 @@ select {
 /* //////////////////////
   General styling
   /////////////////////// */
+
+
 :root {
   --clr-back-300: #13212F; /* hsl(210, 42%, 13%) */
   --clr-back-400: #20303F; /* hsl(209, 33%, 19%) */
@@ -93,7 +97,7 @@ select {
   --clr-neutral-400: #a2b7cd; /* hsl(211, 30%, 72%) */
   --clr-neutral-600: #546a83; /* hsl(212, 22%, 42%) */
   
-  --ff-body: "Roboto", sans-serif;
+  --ff-body: "Inter",sans-serif;
 }
 
 
@@ -120,7 +124,7 @@ body {
   align-items: center;
   list-style: none;
   gap: 1em;
-  max-width: 48rem;
+  max-width: 70rem;
   height: 100%;
   padding: 0 32px;
   margin: 0 auto;
@@ -214,7 +218,7 @@ main {
   /* max-height: 100%; */
 }
 .hero-title-container {
-  flex: 0 0 324px;
+  flex: 0 0 334px;
   max-width: 100%;
 }
 .hero-title-container h1 {

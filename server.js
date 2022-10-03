@@ -1,140 +1,68 @@
-const express = require('express')
-const bcrypt = require("bcryptjs");
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-require('dotenv').config()
-// const cors = require('cors')
-// const MongoClient = require('mongodb').MongoClient
-const PORT = 2121
+const passport = require("passport");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const methodOverride = require("method-override");
+const flash = require("express-flash");
+const logger = require("morgan");
+const connectDB = require("./config/database");
+const mainRoutes = require("./routes/main.routes");
+// const postRoutes = require("./routes/posts.routes");
 
+//Use .env file in config folder
+require("dotenv").config({ path: "./config/.env" });
 
-// let db,
-//     dbConnectionStr = process.env.DB_STRING,
-//     dbName = process.env.DB_NAME
+// Passport config
+require("./config/passport")(passport);
 
-// MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-//     .then(client => {
-//         console.log(`Connected to ${dbName} Database`)
-//         db = client.db(dbName)
-//     })
+//Connect To Database
+connectDB();
 
-const mongoDb = process.env.DB_STRING;
-mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "mongo connection error"));
+//Using EJS for views
+app.set("view engine", "ejs");
 
-const User = mongoose.model(
-    "User",
-    new Schema({
-        username: { type: String, required: true },
-        password: { type: String, required: true }
-    })
+//Static Folder
+app.use(express.static("public"));
+
+//Body Parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//Logging
+app.use(logger("dev"));
+
+//Use forms for put / delete - look for query parameter '_method' in incoming POST requests
+app.use(methodOverride("_method"));
+
+// Setup Sessions - stored in MongoDB
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
+  })
 );
-
-passport.use(
-    new LocalStrategy((username, password, done) => {
-      User.findOne({ username: username }, (err, user) => {
-        if (err) { 
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false, { message: "Incorrect username" });
-        }
-        bcrypt.compare(password, user.password, (err, res) => {
-            if (res) {
-              // passwords match! log user in
-              return done(null, user)
-            } else {
-              // passwords do not match!
-              return done(null, false, { message: "Incorrect password" })
-            }
-        });
-      });
-    })
-);
-
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
+// 
+app.use((req, res, next) => {
+  res.locals.currentUser = (req.session.passport) ? (req.session.passport.user) : undefined;
+  next();
 });
-  
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
-});
-    
-const app = express()
-// app.use(cors())
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-// app.use(express.urlencoded({ extended: true }))
-// app.use(express.json())
 
-// change secret to process.env.SESSION_SECRET
-app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
-app.use(function(req, res, next) {
-    res.locals.currentUser = req.user;
-    next();
-});
 
-app.get('/',(request, response) => {
-    db.collection('cats').find().toArray()
-    .then(data => {
-        response.render('index.ejs', { info: data })
-    })
-    .catch(error => console.error(error))
-})
-app.get("/login", (req, res) => res.render("login"));
-app.get("/signup", (req, res) => res.render("signup"));
-app.get("/log-out", (req, res) => {
-    req.logout(function (err) {
-      if (err) {
-        return next(err);
-      }
-      res.redirect("/");
-    });
-});
+//Use flash messages for errors, info, ect...
+app.use(flash());
 
-app.post("/signup", (req, res, next) => {
-    bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-        // if err, do something
-        // otherwise, store hashedPassword in DB
-        if (err) {
-            return next(err);
-        }
-        const user = new User({
-            username: req.body.username,
-            password: hashedPassword
-        }).save(err => {
-        if (err) { 
-            return next(err);
-        }
-        res.redirect("/");
-        });
-    });
-});
+//Setup Routes For Which The Server Is Listening
+app.use("/", mainRoutes);
+// app.use("/post", postRoutes);
 
-app.post(
-    "/login",
-    passport.authenticate("local", {
-      successRedirect: "/",
-      failureRedirect: "/"
-    })
-);
-
-
-app.put('/...', (request, response) => {
-})
-
-app.delete('/...', (request, response) => {
-})
-
-app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`Server running on port ${PORT} http://localhost:${PORT}/`)
+//Server Running
+app.listen(process.env.PORT, ()=>{
+    console.log(`Server is running, http://localhost:${process.env.PORT}/`)
 })
