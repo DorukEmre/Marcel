@@ -6,8 +6,30 @@
         <%- include('partials/header.ejs') %>        
     </header>
 
-    <main class="">
-      <p>Spot page</p>
+    <main>
+      <section class="login-container">
+        <div class="login-logo-container">
+            <a href="/"><img src="assets/demo-Snap-a-cat.jpg" alt="cat logo"></a>
+        </div>
+        <section class="form-panel">
+          <h2>Snap a post</h2>
+          <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <div class="form-group">
+                <label for="name">Name of the cat (or your best guess)</label>
+                <input type="text"" id="name" name="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="comment"">Add a comment</label>
+              <textarea id="comment" name="comment" placeholder="Add a comment"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="imgUpload"">Image</label>
+              <input type="file" id="imageUpload" name="file">
+            </div>
+            <button type="submit" value="Upload">Submit</button>
+          </form>
+        </section>
+      </section>
     </main>
 
     <footer>
