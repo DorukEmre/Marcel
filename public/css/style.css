@@ -260,20 +260,20 @@ main {
   max-height: 100%;
   margin: 0 auto;
 }
-.login-panel,
-.signup-panel {
+.form-panel,
+.form-panel {
   background-color: var(--clr-back-400);
   border-radius: 8px;
   padding: 2rem 2rem 1.5rem;
 }
-.login-panel h1,
-.signup-panel h1 {
+.form-panel h1,
+.form-panel h1 {
   padding-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: 400;
 }
-.login-panel form,
-.signup-panel form {
+.form-panel form,
+.form-panel form {
   padding-bottom: 2rem;
 }
 .form-group {
@@ -303,8 +303,8 @@ main {
   outline: 0;
   box-shadow: inset 0 1px 2px rgba(203,203,210,0.2),0 0 4px rgba(121,88,159,0.3);
 }
-.login-panel button,
-.signup-panel button {  
+.form-panel button,
+.form-panel button {  
   color: var(--clr-back-400);
   background-color: var(--clr-accent-300);
   font-size: 1.1rem;
@@ -315,12 +315,12 @@ main {
   cursor: pointer;
   transition-duration: 0.2s;
 }
-.login-panel button:hover,
-.signup-panel button:hover {
+.form-panel button:hover,
+.form-panel button:hover {
   background-color: var(--clr-accent-400);
 }
-.login-panel a,
-.signup-panel a {
+.form-panel a,
+.form-panel a {
   color: var(--clr-accent-300);
 }
 
