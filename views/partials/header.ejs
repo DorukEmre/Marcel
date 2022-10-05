@@ -1,7 +1,7 @@
 <nav class="header-navbar">
     <% if (currentUser) {%>
         <ul class="header-ul">
-            <li class="header-li logout">
+            <li class="header-li demo" style="max-width: 80px; background-color: rgb(53, 35, 0);">
               <a href="/demo" style="color: orange;">DEMO LINK</a>
             </li>
 
@@ -21,6 +21,9 @@
         </ul>
     <% } else { %>
         <ul class="header-ul new-session">
+            <li class="header-li demo" style="max-width: 80px; margin-right: auto; background-color: rgb(53, 35, 0);">
+              <a href="/demo" style="color: orange;">DEMO LINK</a>
+            </li>
             <li class="header-li login"><a href="/login" class="">Log in</a></li>
             <li class="header-li signup"><a href="/signup" class="">Sign up</a></li>
         </ul>
