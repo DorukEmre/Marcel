@@ -8,6 +8,20 @@
 
     <main class="">
       <p>Feed page</p>
+      <div class="">
+        <ul class="">
+          <% for(var i=0; i<posts.length; i++) {%>
+            <li class="">
+              <!-- <a href="/post/<%= posts[i]._id%>"> -->
+                <p><%= posts[i].catName%></p>
+                <img class="" src="<%= posts[i].image%>">
+                <p><%= posts[i].comment%></p>
+              <!-- </a> -->
+            </li>
+          <% } %>
+          </ul>
+      </div>
+      <img src="assets/demo-Feed.jpg" alt="">
     </main>
 
     <footer>

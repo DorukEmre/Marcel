@@ -6,7 +6,6 @@ const clustersController = require("../controllers/clusters.controllers");
 const exploreController = require("../controllers/explore.controllers");
 const postsController = require("../controllers/posts.controllers");
 const profileController = require("../controllers/profile.controllers");
-const spotController = require("../controllers/spot.controllers");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get("/", homeController.getIndex);
@@ -21,9 +20,7 @@ router.post("/signup", authController.postSignup);
 router.get("/feed", ensureAuth, postsController.getFeed);
 
 // GET page to post new cat pictures
-router.get("/spot", ensureAuth, spotController.getSpot);
-// POST new cat pictures
-// router.post("/spot", ensureAuth, spotController.getSpot);
+router.get("/spot", ensureAuth, postsController.getSpot);
 
 // GET page to explore map of cats in the neighborhood
 router.get("/explore", ensureAuth, exploreController.getExplore);
