@@ -1,6 +1,10 @@
 <nav class="header-navbar">
     <% if (currentUser) {%>
         <ul class="header-ul">
+            <li class="header-li logout">
+              <a href="/demo" style="color: orange;">DEMO LINK</a>
+            </li>
+
             <li class="header-li <%= active[0] %>"><a href="feed" class="<%= active[0] %>"><img src="assets/nav_icons/pets_FILL1_wght400_GRAD0_opsz48-<%= active[0] %>.svg" alt="" class="nav-icon"><p>Feed</p></a></li>
 
             <li class="header-li <%= active[1] %>"><a href="explore" class="<%= active[1] %>"><img src="assets/nav_icons/explore_FILL1_wght400_GRAD0_opsz48-<%= active[1] %>.svg" alt="" class="nav-icon"><p>Explore</p></a></li>
