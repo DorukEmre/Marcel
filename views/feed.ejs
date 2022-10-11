@@ -13,8 +13,12 @@
             <li class="">
               <!-- <a href="/post/<%= posts[i]._id%>"> -->
                 <p><%= posts[i].catName%></p>
-                <img class="" src="<%= posts[i].image%>">
-                <p><%= posts[i].comment%></p>
+                <img class="" src="<%= posts[i].imageUrl%>">
+                <p>
+                  Likes: <%= posts[i].greatCat.length %>
+                  <img class="" src="assets/icons/like-<%= posts[i].hidden %>.svg">
+                </p>
+                <p><%= posts[i].caption%></p>
               <!-- </a> -->
             </li>
           <% } %>
