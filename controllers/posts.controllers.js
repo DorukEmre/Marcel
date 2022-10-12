@@ -65,4 +65,15 @@ module.exports = {
       console.log(err)
     }
   },
+  getComments: async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.id).lean()
+      // console.log('post', post)
+      const { cloudinaryId, GPS, reports, ...others } = post
+      // console.log('others', others)
+      res.json(others)
+    } catch (err) {
+      console.log(err)
+    }
+  },
 }

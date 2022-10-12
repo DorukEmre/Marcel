@@ -1,40 +1,40 @@
-const express = require("express");
-const app = express();
-const mongoose = require("mongoose");
-const passport = require("passport");
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
-const methodOverride = require("method-override");
-const flash = require("express-flash");
-const logger = require("morgan");
-const connectDB = require("./config/database");
-const mainRoutes = require("./routes/main.routes");
-const postRoutes = require("./routes/posts.routes");
+const express = require('express')
+const app = express()
+const mongoose = require('mongoose')
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
+const methodOverride = require('method-override')
+const flash = require('express-flash')
+const logger = require('morgan')
+const connectDB = require('./config/database')
+const mainRoutes = require('./routes/main.routes')
+const postsRoutes = require('./routes/posts.routes')
 
 //Use .env file in config folder
-require("dotenv").config({ path: "./config/.env" });
+require('dotenv').config({ path: './config/.env' })
 
 // Passport config
-require("./config/passport")(passport);
+require('./config/passport')(passport)
 
 //Connect To Database
-connectDB();
+connectDB()
 
 //Using EJS for views
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs')
 
 //Static Folder
-app.use(express.static("public"));
+app.use(express.static('public'))
 
 //Body Parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 //Logging
-app.use(logger("dev"));
+app.use(logger('dev'))
 
 //Use forms for put / delete - look for query parameter '_method' in incoming POST requests
-app.use(methodOverride("_method"));
+app.use(methodOverride('_method'))
 
 // Setup Sessions - stored in MongoDB
 app.use(
@@ -43,26 +43,28 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
-  })
-);
-// 
+  }),
+)
+//
 app.use((req, res, next) => {
-  res.locals.currentUser = (req.session.passport) ? (req.session.passport.user) : undefined;
-  next();
-});
+  res.locals.currentUser = req.session.passport
+    ? req.session.passport.user
+    : undefined
+  next()
+})
 
 // Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize())
+app.use(passport.session())
 
 //Use flash messages for errors, info, ect...
-app.use(flash());
+app.use(flash())
 
 //Setup Routes For Which The Server Is Listening
-app.use("/", mainRoutes);
-app.use("/post", postRoutes);
+app.use('/', mainRoutes)
+app.use('/posts', postsRoutes)
 
 //Server Running
-app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`Server is running, http://localhost:${process.env.PORT}/`)
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`Server is running, http://localhost:${process.env.PORT}/`)
 })

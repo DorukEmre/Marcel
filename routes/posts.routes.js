@@ -12,4 +12,6 @@ router.post('/createPost', upload.single('file'), postsController.createPost)
 
 router.put('/likePost/:id', postsController.likePost)
 
+router.get('/getComments/:id', postsController.getComments)
+
 module.exports = router
