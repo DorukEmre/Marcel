@@ -12,12 +12,28 @@
           <% for(var i=0; i<posts.length; i++) {%>
             <li class="">
               <!-- <a href="/post/<%= posts[i]._id%>"> -->
-                <p><%= posts[i].catName%></p>
+                <p><%= posts[i].catName%> by <%= posts[i].user%></p>
                 <img class="" src="<%= posts[i].imageUrl%>">
-                <p>
-                  Likes: <%= posts[i].greatCat.length %>
-                  <img class="" src="assets/icons/like-<%= posts[i].hidden %>.svg">
-                </p>
+                <div>
+                  <form
+                    class=""
+                    action="/post/likePost/<%= posts[i]._id %>?_method=PUT"
+                    method="POST"
+                  >                     
+                    <button class="" type="submit">
+                      <% if ((posts[i].greatCat.find((x) => x == user.id) != undefined)) { %>
+                        <img class="" src="assets/icons/like-true.svg" height="24px" width="24px">
+                      <% } else { %>
+                        <img class="" src="assets/icons/like-false.svg" height="24px" width="24px">
+                      <% } %>
+                    </button>
+                  </form>
+                  <% if (posts[i].user == user.id) { %>
+                    <p>del</p>
+                  <% } %>
+                  
+                  <span> <%= posts[i].greatCat.length %></span>
+                </div>
                 <p><%= posts[i].caption%></p>
               <!-- </a> -->
             </li>

@@ -8,7 +8,8 @@ module.exports = {
     try {
       const active = ['active', 'mid', 'mid', 'mid', 'mid']
       const posts = await Post.find().sort({ createdAt: 'desc' }).lean() // .lean() tells Mongoose to skip instantiating a full Mongoose document and just give a JS object
-      res.render('feed.ejs', { posts, active })
+
+      res.render('feed.ejs', { posts, user: req.user, active })
     } catch (err) {
       console.log(err)
     }
@@ -42,20 +43,26 @@ module.exports = {
       console.log(err)
     }
   },
-  // getFeed: async (req, res) => {
-  //   try {
-  //     const posts = await Post.find().sort({ createdAt: "desc" }).lean(); // .lean() tells Mongoose to skip instantiating a full Mongoose document and just give a JS object
-  //     res.render("feed.ejs", { posts: posts });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
-  // getProfile: async (req, res) => {
-  //   try {
-  //     const posts = await Post.find({ user: req.user.id });
-  //     res.render("profile.ejs", { posts: posts, user: req.user });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
+  likePost: async (req, res) => {
+    try {
+      const likedPost = await Post.findById(req.params.id).lean()
+      if (likedPost.greatCat.find((x) => x == req.user.id) == undefined) {
+        await Post.findOneAndUpdate(
+          { _id: req.params.id },
+          { $push: { greatCat: req.user.id } },
+        )
+        console.log('Likes +1')
+      } else {
+        await Post.findOneAndUpdate(
+          { _id: req.params.id },
+          { $pull: { greatCat: req.user.id } },
+        )
+        console.log('Likes -1')
+      }
+      // res.redirect(`/post/${req.params.id}`)
+      res.redirect(`/feed`)
+    } catch (err) {
+      console.log(err)
+    }
+  },
 }
