@@ -2,7 +2,7 @@
 
 const modal = document.querySelector('#modal')
 const openModals = document.querySelectorAll('.open-comments')
-const closeModal = document.querySelector('.close-button')
+const closeModal = document.querySelectorAll('.close-button')
 
 // openModal.addEventListener('click', (e) => {
 //   // const id = e.data('post')
@@ -10,8 +10,15 @@ const closeModal = document.querySelector('.close-button')
 //   modal.showModal()
 // })
 
-closeModal.addEventListener('click', () => {
-  modal.close()
+// closeModal.addEventListener('click', () => {
+//   modal.close()
+// })
+
+Array.from(closeModal).forEach((el) => {
+  el.addEventListener('click', () => {
+    modal.querySelector('.creat-comment').reset()
+    modal.close()
+  })
 })
 
 Array.from(openModals).forEach((el) => {
@@ -29,15 +36,16 @@ async function openModal() {
     modal.querySelector('.picBy').textContent = data.user
     modal.querySelector('.catImg').src = data.imageUrl
     modal.querySelector('.caption').textContent = data.caption
+    modal.querySelector(
+      '.creat-comment',
+    ).action = `posts/createComment/${postId}`
+
+    // Comments
+    // <em class="userName"><%= comments[i].user.userName%>: </em>
+    // <span class="comment"><%= comments[i].comment%></span>
 
     modal.showModal()
   } catch (err) {
     console.log(err)
   }
 }
-
-// Array.from(closeModal).forEach((el)=>{
-//   el.addEventListener('click', () => {
-//     modal.close()
-//   })
-// })

@@ -1,5 +1,6 @@
 const cloudinary = require('../middleware/cloudinary')
 const Post = require('../models/Post.model')
+const Comment = require('../models/Comment.model')
 // const Cluster = require("../models/Cluster.model");
 // const Cat = require("../models/Cat.model");
 
@@ -68,10 +69,21 @@ module.exports = {
   getComments: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id).lean()
-      // console.log('post', post)
+
+      const comments = await Comment.find({ postId: req.params.id })
+        .sort({ createdAt: 'asc' })
+        .populate('user')
+        .lean()
+      console.log('comments', comments)
       const { cloudinaryId, GPS, reports, ...others } = post
       // console.log('others', others)
       res.json(others)
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  createComment: async (req, res) => {
+    try {
     } catch (err) {
       console.log(err)
     }

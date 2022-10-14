@@ -14,4 +14,6 @@ router.put('/likePost/:id', postsController.likePost)
 
 router.get('/getComments/:id', postsController.getComments)
 
+router.post('/createComment/:id', postsController.createComment)
+
 module.exports = router
