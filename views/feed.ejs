@@ -8,17 +8,24 @@
 
     <main class="">
       <dialog class="modal" id="modal">
-        <h2 class="catName"></h2>
-        <h3 class="picBy"></h3>
-        <button class="btn close-button">
-          <img class="" src="assets/icons/close_FILL0_wght400_GRAD0_opsz48.svg" height="24px" width="24px">
-        </button>
-        
-        <img class="catImg" src="">
-        <div class="modal-comments-container">
-          <p class="caption"></p>
-          <%- include('partials/comment') -%>
-        </div>        
+        <div class="modal-container">
+          <section class="modal--title">
+            <div>
+              <h2 class="catName"></h2>
+              <h3 class="picBy"></h3>
+            </div>
+            <button class="btn close-button">
+              <img class="" src="assets/icons/close_FILL0_wght400_GRAD0_opsz48.svg" height="24px" width="24px">
+            </button>
+          </section>
+          
+          <img class="catImg" src="">
+
+          <section class="modal--comments-container">
+            <p class="caption"></p>
+            <%- include('partials/comment') -%>
+          </section>
+        </div>   
       </dialog>
 
       <div class="">

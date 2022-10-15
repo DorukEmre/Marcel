@@ -136,6 +136,15 @@ body {
   font-family: var(--ff-body);
 }
 
+ul {  
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+main {
+  padding: 1.5rem;
+}
+
 /* ////////// */
 /*   Header   */
 /* ////////// */
@@ -149,7 +158,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  list-style: none;
   gap: 1em;
   max-width: 70rem;
   height: 100%;
@@ -266,7 +274,6 @@ main {
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 1em;
-
 }
 
 .card {
@@ -275,10 +282,9 @@ main {
   gap: 0.5em;
   max-width: 250px;
   border: 1px solid var(--clr-neutral-600);
-  list-style: none;
-  padding: 1em;
-  box-shadow: 2px 2px 5px var(--clr-back-400);
-
+  padding: 0.5em;
+  box-shadow: 1px 1px 5px var(--clr-back-400);
+  border-radius: 5px;
 }
 .image-container {
   width: 100%;
@@ -296,7 +302,11 @@ form.like-button {
   width: fit-content;
 }
 button.like-button {
-
+  /* background-color: transparent; */
+  transition: transform 150ms ease-in;
+}
+button.like-button:hover {
+  transform: scale(1.07);
 }
 .feed-comments-container {
   display: flex;
@@ -308,14 +318,65 @@ button.like-button {
 
 .modal {
   padding: 1em;
-  max-width: 50ch;
-  /* border: 0; */
+  max-width: 80vw;
+  max-height: 90vh;  
+  min-width: 300px;
+  border: 1px solid var(--clr-neutral-600);
   box-shadow: 0 0 1em rgb(0 0 0 / .3);
+  background-color: var(--clr-back-300);
+  color: var(--clr-neutral-300);
+}
+.modal::backdrop {
+  background: rgb(0 0 0 / 0.7);
 }
 
-.modal::backdrop {
-  background: rgb(0 0 0 / 0.4);
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
+
+.modal--title {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5em;
+}
+.close-button {
+  flex-grow: 0;
+  height: fit-content;
+  width: fit-content;
+  min-width: max-content;
+  align-self: flex-start;
+}
+
+.caption {
+  margin-bottom: 0.5rem;
+}
+form.create-comment {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+.create-comment--textarea {  
+  resize: none;
+  background-color: var(--clr-neutral-600);
+  outline: 2px solid transparent;  
+  text-indent: 6px;
+  /* border: 2px solid var(--clr-neutral-400); */
+  border: 0;
+}
+.create-comment--textarea:focus {  
+  outline: 2px solid var(--clr-neutral-300);  
+}
+
+.send-button {
+  flex-grow: 0;
+  height: fit-content;
+  width: fit-content;
+  min-width: max-content;
+  align-self: flex-end;
+}
+
 
 
 /* ////////////////////// */

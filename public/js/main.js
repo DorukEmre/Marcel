@@ -16,7 +16,7 @@ const closeModal = document.querySelectorAll('.close-button')
 
 Array.from(closeModal).forEach((el) => {
   el.addEventListener('click', () => {
-    modal.querySelector('.creat-comment').reset()
+    modal.querySelector('.create-comment--textarea').value = ''
     modal.close()
   })
 })
@@ -37,7 +37,7 @@ async function openModal() {
     modal.querySelector('.catImg').src = data.imageUrl
     modal.querySelector('.caption').textContent = data.caption
     modal.querySelector(
-      '.creat-comment',
+      '.create-comment',
     ).action = `posts/createComment/${postId}`
 
     // Comments
