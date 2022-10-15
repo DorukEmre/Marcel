@@ -15,14 +15,19 @@
               <h3 class="picBy"></h3>
             </div>
             <button class="btn close-button">
-              <img class="" src="assets/icons/close_FILL0_wght400_GRAD0_opsz48.svg" height="24px" width="24px">
+              <img class="" src="/assets/icons/close_FILL0_wght400_GRAD0_opsz48.svg" height="24px" width="24px">
             </button>
           </section>
           
-          <img class="catImg" src="">
+          <section class="modal--image">
+            <img class="catImg" src="">
+          </section>
 
           <section class="modal--comments-container">
-            <p class="caption"></p>
+            <div>
+              <em class="caption-user"></em>
+              <span class="caption"></span>
+            </div>
             <%- include('partials/comment') -%>
           </section>
         </div>   
@@ -32,34 +37,32 @@
         <ul class="cards-container">
           <% for(var i = 0; i < posts.length; i++) { %>
             <li class="card">
-              <!-- <a href="/posts/<%= posts[i]._id%>"> -->
-                <p><%= posts[i].catName%> by <%= posts[i].user%></p>
-                <div class="image-container">
-                  <img class="" src="<%= posts[i].imageUrl%>">
-                </div>
-                <div class="like-container">
-                  <form
-                    class="like-button"
-                    action="/posts/likePost/<%= posts[i]._id %>?_method=PUT"
-                    method="POST"
-                  >                     
-                    <button class="like-button" type="submit">
-                      <% if ((posts[i].greatCat.find((x) => x == user.id) != undefined)) { %>
-                        <img class="" src="assets/icons/like-true.svg" height="24px" width="24px">
-                      <% } else { %>
-                        <img class="" src="assets/icons/like-false.svg" height="24px" width="24px">
-                      <% } %>
-                    </button>
-                  </form>                  
-                  <span class="like-number"><%= posts[i].greatCat.length %></span>
-                </div>
-                <div class="feed-comments-container">
-                  <p class="caption"><%= posts[i].caption%></p>
-                  <button class="open-comments" data-id="<%= posts[i]._id%>">
-                    <img src="assets/icons/comment_FILL0_wght400_GRAD0_opsz48.svg" alt="" height="24px" width="24px">
+              <p><%= posts[i].catName%> by <%= posts[i].user.userName%></p>
+              <a class="card--image-container" href="/posts/<%= posts[i]._id%>">
+                <img class="" src="<%= posts[i].imageUrl%>">
+              </a>
+              <section class="card--like-container">
+                <form
+                  class="like-button"
+                  action="/posts/likePost/<%= posts[i]._id %>?_method=PUT"
+                  method="POST"
+                >                     
+                  <button class="like-button" type="submit">
+                    <% if ((posts[i].greatCat.find((x) => x == user.id) != undefined)) { %>
+                      <img class="" src="/assets/icons/like-true.svg" height="24px" width="24px">
+                    <% } else { %>
+                      <img class="" src="/assets/icons/like-false.svg" height="24px" width="24px">
+                    <% } %>
                   </button>
-                </div>
-              <!-- </a> -->
+                </form>                  
+                <span class="like-number"><%= posts[i].greatCat.length %></span>
+              </section>
+              <section class="card--comments-container">
+                <p class="caption"><%= posts[i].caption%></p>
+                <button class="open-comments" data-id="<%= posts[i]._id%>">
+                  <img src="/assets/icons/comment_FILL0_wght400_GRAD0_opsz48.svg" alt="" height="24px" width="24px">
+                </button>
+              </section>
             </li>
           <% } %>
           </ul>

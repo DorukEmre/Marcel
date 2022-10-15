@@ -8,7 +8,10 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const active = ['active', 'mid', 'mid', 'mid', 'mid']
-      const posts = await Post.find().sort({ createdAt: 'desc' }).lean() // .lean() tells Mongoose to skip instantiating a full Mongoose document and just give a JS object
+      const posts = await Post.find()
+        .sort({ createdAt: 'desc' })
+        .populate('user')
+        .lean() // .lean() tells Mongoose to skip instantiating a full Mongoose document and just give a JS object
 
       res.render('feed.ejs', { posts, user: req.user, active })
     } catch (err) {
@@ -18,6 +21,16 @@ module.exports = {
   getSpot: (req, res) => {
     const active = ['mid', 'mid', 'active', 'mid', 'mid']
     res.render('spot.ejs', { active })
+  },
+  getPost: async (req, res) => {
+    const active = ['active', 'mid', 'mid', 'mid', 'mid']
+    const post = await Post.findById(req.params.id).populate('user').lean()
+    const comments = await Comment.find({ postId: req.params.id })
+      .sort({ createdAt: 'asc' })
+      .populate('user')
+      .lean()
+
+    res.render('post.ejs', { post, comments, user: req.user, active })
   },
   createPost: async (req, res) => {
     try {
@@ -68,22 +81,36 @@ module.exports = {
   },
   getComments: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id).lean()
+      const post = await Post.findById(req.params.id).populate('user').lean()
 
       const comments = await Comment.find({ postId: req.params.id })
         .sort({ createdAt: 'asc' })
         .populate('user')
         .lean()
       console.log('comments', comments)
-      const { cloudinaryId, GPS, reports, ...others } = post
-      // console.log('others', others)
-      res.json(others)
+
+      // const { cloudinaryId, GPS, reports, ...others } = post
+
+      const data = { post, comments }
+      console.log('data_getComments', data)
+
+      res.json(data)
     } catch (err) {
       console.log(err)
     }
   },
   createComment: async (req, res) => {
     try {
+      console.log('createComment')
+      console.log(req.body)
+      console.log(req.body.comment)
+      await Comment.create({
+        comment: req.body.comment,
+        user: req.user.id,
+        postId: req.params.id,
+      })
+      console.log('Comment has been added!')
+      res.redirect(`/posts/${req.params.id}`)
     } catch (err) {
       console.log(err)
     }

@@ -1,0 +1,71 @@
+<%- include('partials/head.ejs') %>
+<title>Marcel The Outdoor Cat</title>
+</head>
+<body>
+<header>
+    <%- include('partials/header.ejs') %>        
+</header>
+
+<main class="">
+  
+  <section class="post">
+
+      <section class="card--title-container">
+        <%= post.catName%> by <%= post.user.userName%>
+      </section>
+      <section class="card--image-container">
+        <img class="" src="<%= post.imageUrl%>">
+      </section>
+      <section class="card--like-container">
+        <form
+          class="like-button"
+          action="/posts/likePost/<%= post._id %>?_method=PUT"
+          method="POST"
+        >                     
+          <button class="like-button" type="submit">
+            <% if ((post.greatCat.find((x) => x == user.id) != undefined)) { %>
+              <img class="" src="/assets/icons/like-true.svg" height="24px" width="24px">
+            <% } else { %>
+              <img class="" src="/assets/icons/like-false.svg" height="24px" width="24px">
+            <% } %>
+          </button>
+        </form>                  
+        <span class="like-number"><%= post.greatCat.length %></span>
+      </section>
+      <section class="post--comments-container">
+        <div>
+          <em><%= post.user.userName%>: </em>
+          <span class="caption"><%= post.caption%></span>
+        </div>
+        
+        <ul class="comments-list">          
+          <% for(var i=0; i<comments.length; i++) {%>
+            <li class="comments-line">
+              <div>
+                <em><%= comments[i].user.userName%>: </em>
+                <span><%= comments[i].comment%></span>
+              </div>
+            </li>
+          <% } %>
+        </ul>
+        
+        <div class="">
+          <form class="create-comment" action="" enctype="application/x-www-form-urlencoded" method="POST">
+            <label for="comment" class="create-comment--label">
+              <textarea rows="2" class="create-comment--textarea" id="comment" name="comment" placeholder="Add a comment" autofocus required></textarea>
+            </label>
+        
+            <button class="btn send-button" type="submit" value="Upload">            
+              <img class="" src="/assets/icons/send_FILL0_wght400_GRAD0_opsz48.svg" height="24px" width="24px">
+            </button>
+          </form>
+        </div>
+         
+      </section>
+      
+  </section>
+
+</main>
+
+<footer>
+    <%- include('partials/footer.ejs') %>

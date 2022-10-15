@@ -286,13 +286,13 @@ main {
   box-shadow: 1px 1px 5px var(--clr-back-400);
   border-radius: 5px;
 }
-.image-container {
+.card--image-container {
   width: 100%;
 }
-.image-container img {
+.card--image-container img {
   width: 100%;
 }
-.like-container {
+.card--like-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -308,7 +308,7 @@ button.like-button {
 button.like-button:hover {
   transform: scale(1.07);
 }
-.feed-comments-container {
+.card--comments-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -340,6 +340,7 @@ button.like-button:hover {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.5em;
+  justify-content: space-between;
 }
 .close-button {
   flex-grow: 0;
@@ -349,21 +350,37 @@ button.like-button:hover {
   align-self: flex-start;
 }
 
-.caption {
-  margin-bottom: 0.5rem;
+.modal--image {
+  align-self: center;
+}
+.modal--comments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.comments-line {
+  margin-bottom: 0.25rem;
 }
 form.create-comment {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+}
+.create-comment--label {
+  width: 100%;
 }
 .create-comment--textarea {  
   resize: none;
-  background-color: var(--clr-neutral-600);
+  background-color: var(--clr-back-400);
+  color: var(--clr-neutral-300);
   outline: 2px solid transparent;  
   text-indent: 6px;
   /* border: 2px solid var(--clr-neutral-400); */
   border: 0;
+  width: 100%;
 }
 .create-comment--textarea:focus {  
   outline: 2px solid var(--clr-neutral-300);  
@@ -375,6 +392,27 @@ form.create-comment {
   width: fit-content;
   min-width: max-content;
   align-self: flex-end;
+}
+
+/* ///////// */
+/* Post page */
+/* ///////// */
+
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  max-width: 32rem;
+  border: 1px solid var(--clr-neutral-600);
+  padding: 0.5em;
+  box-shadow: 1px 1px 5px var(--clr-back-400);
+  border-radius: 5px;
+  margin: 0 auto;
+}
+.post--comments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 
