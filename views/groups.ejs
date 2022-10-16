@@ -8,11 +8,84 @@
 
   <main id="groups-page">
     <div class="groups-container">
-      <h4>Groups allow you to share the locations of the cat spottings with your friends.</h4>
-      <p>Warning: Every member of your groups will be able to see the location of the pictures you have taken</p>
+      <section class="groups--title">
+        <h1>Join or create a group</h1>
+        <div class="bullet-point">
+          <img src="/assets/icons/cat.svg" alt="" height="24" width="24">
+          <p>Form groups with your friends and share your pictures with them.</p>
+        </div>
+        <div class="bullet-point">
+          <img src="/assets/icons/cat.svg" alt="" height="24" width="24">
+          <p>Groups allow you to share the locations of your cat spottings.</p>
+        </div>
+        <p class="notice"><span>Notice:</span> Every member of your groups will be able to see the location of the pictures you share.</p>
+      </section>
 
+      <section class="groups-card groups--join">
+        <h2>Join an existing group</h2>
+        <p>Type in the group code <span>(example: London#1234)</span></p>
+        <form class="join-group-form" action="/joinGroup" method="get">
+          <label for="join-group-code">
+            <input name="join-group-code" id="join-group-code" type="text" placeholder="Group code" required>
+          </label>
+          <button class="groups--button join-group-button" type="submit">Request to join group</button>
+        </form>
+
+        <dialog class="join-group-modal" id="join-group-modal">
+          <div>
+            <p>Create group '<span class="new-group-name"></span>'?</p>
+            <div>
+              <button class="cancel-join-group">Cancel</button>
+              <form class="join-group-form" action="" method="post">
+                <button class="confirm-join-group">Request to join group</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      </section>
+      
+      <p>Link 'Request to join group' button to respective form</p>
+      <p>First search for group, then 'Request to join group' option appears</p>
+
+      <section class="groups-card groups--create">
+        <h2>Create a new group</h2>
+        <form class="create-group-form" action="/groups/createGroup" enctype="application/x-www-form-urlencoded" method="post">
+          <label for="create-group-name">
+            <input name="create-group-name" id="create-group-name" type="text" placeholder="Group name" required>
+            <p class="restrictions">(Max 20 characters)</p>
+          </label>
+          <button class="groups--button create-group-button" type="submit">Create group</button>
+        </form>
+
+        <dialog class="create-group-modal" id="create-group-modal">
+          <div>
+            <p>Create group '<span class="new-group-name"></span>'?</p>
+            <div>
+              <button class="cancel-new-group">Cancel</button>
+              <button class="confirm-new-group">OK</button>
+            </div>
+          </div>
+        </dialog>
+      </section>
+      <p>'Create group' opens confirmation modal: Are you sure you want to create group: 'name-of-group'</p>
+      
+      <section class="groups-card groups--manage">
+        <h2>Manage your groups</h2>
+        <p>List of groups:</p>
+        <ul class="groups-list">
+          <% for( let i = 0; i < ownedGroups.length; i++ ) { %>
+            <li class="groups-list-item">
+              <a href="/groups/<%= ownedGroups[i]._id %>"><%= ownedGroups[i].groupName %></a><span>Owner</span> 
+            </li>
+          <% } %>
+          <% for( let i = 0; i < memberGroups.length; i++ ) { %>
+            <li class="groups-list-item">
+              <a href="/groups/<%= memberGroups[i]._id %>"><%= memberGroups[i].groupName %></a><span>Member</span>
+            </li>
+          <% } %>
+        </ul>
+      </section>
     </div>
-    <img src="assets/demo-Clusters.jpg" alt="">
   </main>
 
   <footer>

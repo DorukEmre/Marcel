@@ -5,11 +5,11 @@
   <header>
   </header>
   <main id="signup-page">
-    <section class="signup-container">
-      <div class="signup-logo-container">
+    <div class="signup-container">
+      <section class="signup-logo-container">
         <a href="/"><img src="assets/cat_logo-157x200.png" alt="cat logo"></a>
-      </div>
-      <div class="form-panel">
+      </section>
+      <section class="form-panel">
         <h1>Sign Up to Marcel</h1>
         <% if (locals.messages.errors) { %>
           <% messages.errors.forEach( el => { %>
@@ -29,7 +29,7 @@
           <div class="form-group">
             <label for="email">Email address</label>
             <input type="email" id="email" name="email" placeholder="Email" aria-describedby="emailHelp" required autofocus>
-            <p id="emailHelp" class="">We'll never share your email with anyone else.</p> 
+            <small id="emailHelp" class="">We will never share your email with anyone else.</small> 
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -42,8 +42,8 @@
           <button type="submit" >Sign Up</button>
         </form>                
         <p>Already have an account? <a href="/login" class="">Log in</a></p>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer>
