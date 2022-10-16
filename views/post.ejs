@@ -13,9 +13,11 @@
       <section class="card--title-container">
         <%= post.catName%> by <%= post.user.userName%>
       </section>
+
       <section class="card--image-container">
         <img class="" src="<%= post.imageUrl%>">
       </section>
+
       <section class="card--like-container">
         <form
           class="like-button"
@@ -32,10 +34,15 @@
         </form>                  
         <span class="like-number"><%= post.greatCat.length %></span>
       </section>
+
       <section class="post--comments-container">
         <div>
-          <em><%= post.user.userName%>: </em>
-          <span class="caption"><%= post.caption%></span>
+          <em>
+            <%= post.caption != '' ? `${post.user.userName}: ` : '' %>
+          </em>
+          <span class="caption">
+            <%= post.caption != '' ? post.caption : '' %>
+          </span>
         </div>
         
         <ul class="comments-list">          

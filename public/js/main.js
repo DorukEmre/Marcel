@@ -36,8 +36,12 @@ async function openModal() {
     modal.querySelector('.catName').textContent = post.catName
     modal.querySelector('.picBy').textContent = `by ${post.user.userName}`
     modal.querySelector('.catImg').src = post.imageUrl
-    modal.querySelector('.caption-user').textContent = `${post.user.userName}: `
-    modal.querySelector('.caption').textContent = post.caption
+
+    modal.querySelector('.caption-user').textContent =
+      post.caption != '' ? `${post.user.userName}: ` : ''
+    modal.querySelector('.caption').textContent =
+      post.caption != '' ? post.caption : ''
+
     modal.querySelector(
       '.create-comment',
     ).action = `posts/createComment/${postId}`
