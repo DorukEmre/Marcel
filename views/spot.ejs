@@ -1,36 +1,36 @@
-    <%- include('partials/head.ejs') %>
-    <title>Spot | Marcel The Outdoor Cat</title>
+  <%- include('partials/head.ejs') %>
+  <title>Spot | Marcel The Outdoor Cat</title>
 </head>
 <body>
-    <header>
-        <%- include('partials/header.ejs') %>        
-    </header>
+  <header>
+    <%- include('partials/header.ejs') %>        
+  </header>
 
-    <main>
-      <section class="login-container">
-        <div class="login-logo-container">
-            <a href="#"><img src="assets/demo-Snap-a-cat.jpg" alt="cat logo"></a>
-        </div>
-        <section class="form-panel">
-          <h2>Snap a cat</h2>
-          <form action="/posts/createPost" enctype="multipart/form-data" method="POST">
-            <div class="form-group">
-                <label for="catName">Name of the cat (or your best nickname)</label>
-                <input type="text"" id="catName" name="catName" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <label for="comment"">Add a comment</label>
-              <textarea id="comment" name="comment" placeholder="Add a comment"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="imgUpload"">Image</label>
-              <input type="file" id="imageUpload" name="file">
-            </div>
-            <button type="submit" value="Upload">Submit</button>
-          </form>
-        </section>
+  <main id="spot-page">
+    <section class="login-container">
+      <div class="login-logo-container">
+        <a href="#"><img src="assets/demo-Snap-a-cat.jpg" alt="cat logo"></a>
+      </div>
+      <section class="form-panel">
+        <h2>Snap a cat</h2>
+        <form action="/posts/createPost" enctype="multipart/form-data" method="POST">
+          <div class="form-group">
+            <label for="catName">Name of the cat (or your best nickname)</label>
+            <input type="text"" id="catName" name="catName" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="comment"">Add a comment</label>
+            <textarea id="comment" name="comment" placeholder="Add a comment"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="imgUpload"">Image</label>
+            <input type="file" id="imageUpload" name="file">
+          </div>
+          <button type="submit" value="Upload">Submit</button>
+        </form>
       </section>
-    </main>
+    </section>
+  </main>
 
-    <footer>
-        <%- include('partials/footer.ejs') %>
+  <footer>
+    <%- include('partials/footer.ejs') %>

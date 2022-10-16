@@ -1,76 +1,76 @@
-    <%- include('partials/head.ejs') %>
-    <title>Feed | Marcel The Outdoor Cat</title>
+  <%- include('partials/head.ejs') %>
+  <title>Feed | Marcel The Outdoor Cat</title>
 </head>
 <body>
-    <header>
-        <%- include('partials/header.ejs') %>        
-    </header>
+  <header>
+    <%- include('partials/header.ejs') %>        
+  </header>
 
-    <main class="">
-      <dialog class="modal" id="modal">
-        <div class="modal-container">
-          <section class="modal--title">
-            <div>
-              <h2 class="catName"></h2>
-              <h3 class="picBy"></h3>
-            </div>
-            <button class="btn close-button">
-              <img class="" src="/assets/icons/close_FILL0_wght400_GRAD0_opsz48.svg" height="24px" width="24px">
-            </button>
-          </section>
-          
-          <section class="modal--image">
-            <img class="catImg" src="">
-          </section>
+  <main id="feed-page">
+    <dialog class="modal" id="modal">
+      <div class="modal-container">
+        <section class="modal--title">
+          <div>
+            <h2 class="catName"></h2>
+            <h3 class="picBy"></h3>
+          </div>
+          <button class="btn close-button">
+            <img class="" src="/assets/icons/close_FILL0_wght400_GRAD0_opsz48.svg" height="24px" width="24px">
+          </button>
+        </section>
+        
+        <section class="modal--image">
+          <img class="catImg" src="">
+        </section>
 
-          <section class="modal--comments-container">
-            <div>
-              <em class="caption-user"></em>
-              <span class="caption"></span>
-            </div>
-            <%- include('partials/comment') -%>
-          </section>
-        </div>   
-      </dialog>
+        <section class="modal--comments-container">
+          <div>
+            <em class="caption-user"></em>
+            <span class="caption"></span>
+          </div>
+          <%- include('partials/comment') -%>
+        </section>
+      </div>   
+    </dialog>
 
-      <div class="">
-        <ul class="cards-container">
-          <% for(var i = 0; i < posts.length; i++) { %>
-            <li class="card">
-              <p><%= posts[i].catName%> by <%= posts[i].user.userName%></p>
-              <a class="card--image-container" href="/posts/<%= posts[i]._id%>">
-                <img class="" src="<%= posts[i].imageUrl%>">
-              </a>
-              <section class="card--like-container">
-                <form
-                  class="like-button"
-                  action="/posts/likePost/<%= posts[i]._id %>?_method=PUT"
-                  method="POST"
-                >                     
-                  <button class="like-button" type="submit">
-                    <% if ((posts[i].greatCat.find((x) => x == user.id) != undefined)) { %>
-                      <img class="" src="/assets/icons/like-true.svg" height="24px" width="24px">
-                    <% } else { %>
-                      <img class="" src="/assets/icons/like-false.svg" height="24px" width="24px">
-                    <% } %>
-                  </button>
-                </form>                  
-                <span class="like-number"><%= posts[i].greatCat.length %></span>
-              </section>
-              <section class="card--comments-container">
-                <p class="caption"><%= posts[i].caption%></p>
-                <button class="open-comments" data-id="<%= posts[i]._id%>">
-                  <img src="/assets/icons/comment_FILL0_wght400_GRAD0_opsz48.svg" alt="" height="24px" width="24px">
+    <div class="">
+      <ul class="cards-container">
+        <% for(var i = 0; i < posts.length; i++) { %>
+          <li class="card">
+            <p><%= posts[i].catName%> by <%= posts[i].user.userName%></p>
+            <a class="card--image-container" href="/posts/<%= posts[i]._id%>">
+              <img class="" src="<%= posts[i].imageUrl%>">
+            </a>
+            <section class="card--like-container">
+              <form
+                class="like-button"
+                action="/posts/likePost/<%= posts[i]._id %>?_method=PUT"
+                method="POST"
+              >                     
+                <button class="like-button" type="submit">
+                  <% if ((posts[i].greatCat.find((x) => x == user.id) != undefined)) { %>
+                    <img class="" src="/assets/icons/like-true.svg" height="24px" width="24px">
+                  <% } else { %>
+                    <img class="" src="/assets/icons/like-false.svg" height="24px" width="24px">
+                  <% } %>
                 </button>
-              </section>
-            </li>
-          <% } %>
-          </ul>
-      </div>
-      
-      <p>It will eventually look like this:</p>
-      <img src="assets/demo-Feed.jpg" alt="">
-    </main>
+              </form>                  
+              <span class="like-number"><%= posts[i].greatCat.length %></span>
+            </section>
+            <section class="card--comments-container">
+              <p class="caption"><%= posts[i].caption%></p>
+              <button class="open-comments" data-id="<%= posts[i]._id%>">
+                <img src="/assets/icons/comment_FILL0_wght400_GRAD0_opsz48.svg" alt="" height="24px" width="24px">
+              </button>
+            </section>
+          </li>
+        <% } %>
+        </ul>
+    </div>
+    
+    <p>It will eventually look like this:</p>
+    <img src="assets/demo-Feed.jpg" alt="">
+  </main>
 
-    <footer>
-        <%- include('partials/footer.ejs') %>
+  <footer>
+    <%- include('partials/footer.ejs') %>

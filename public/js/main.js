@@ -1,26 +1,25 @@
-// main.js
-
-const modal = document.querySelector('#modal')
-const openModals = document.querySelectorAll('.open-comments')
-const closeModal = document.querySelectorAll('.close-button')
-const commentsList = modal.querySelector('.comments-list')
-
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild)
   }
 }
 
-Array.from(closeModal).forEach((el) => {
-  el.addEventListener('click', () => {
-    modal.querySelector('.create-comment--textarea').value = ''
-    modal.close()
-  })
-})
+if (document.querySelector('#feed-page')) {
+  const modal = document.querySelector('#modal')
+  const openModals = document.querySelectorAll('.open-comments')
+  const closeModal = document.querySelectorAll('.close-button')
 
-Array.from(openModals).forEach((el) => {
-  el.addEventListener('click', openModal)
-})
+  Array.from(closeModal).forEach((el) => {
+    el.addEventListener('click', () => {
+      modal.querySelector('.create-comment--textarea').value = ''
+      modal.close()
+    })
+  })
+
+  Array.from(openModals).forEach((el) => {
+    el.addEventListener('click', openModal)
+  })
+}
 
 async function openModal() {
   try {
@@ -43,7 +42,11 @@ async function openModal() {
       '.create-comment',
     ).action = `posts/createComment/${postId}`
 
+    // Clear comments in modal
+    const commentsList = modal.querySelector('.comments-list')
     removeAllChildNodes(commentsList)
+
+    // Add specific comments  in modal
     comments.forEach((el) => {
       console.log('el', el)
       const item = document.createElement('li')
