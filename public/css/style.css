@@ -143,6 +143,7 @@ ul {
 }
 main {
   padding: 1.5rem;
+  max-width: 72rem;
 }
 
 /* ////////// */
@@ -224,12 +225,9 @@ main {
   color: var(--clr-accent-300);
 }
 
-/* ////////// */
-/*   Main   */
-/* ////////// */
-main {
-  /* min-height: calc(100vh - 91px - 52px); */
-}
+/* ///////////// */
+/*   Home page   */
+/* ///////////// */
 
 .hero-container {
   display: flex;

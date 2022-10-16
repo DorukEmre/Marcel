@@ -1,8 +1,6 @@
 const cloudinary = require('../middleware/cloudinary')
 const Post = require('../models/Post.model')
 const Comment = require('../models/Comment.model')
-// const Cluster = require("../models/Cluster.model");
-// const Cat = require("../models/Cat.model");
 
 module.exports = {
   getFeed: async (req, res) => {

@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const authController = require('../controllers/auth.controllers')
 const homeController = require('../controllers/home.controllers')
-const clustersController = require('../controllers/clusters.controllers')
+const groupsController = require('../controllers/groups.controllers')
 const exploreController = require('../controllers/explore.controllers')
 const postsController = require('../controllers/posts.controllers')
 const profileController = require('../controllers/profile.controllers')
@@ -30,12 +30,12 @@ router.get('/spot', ensureAuth, postsController.getSpot)
 // GET page to explore map of cats in the neighborhood
 router.get('/explore', ensureAuth, exploreController.getExplore)
 
-// GET page to manage clusters
-router.get('/clusters', ensureAuth, clustersController.getClusters)
-// POST to join new cluster
-// router.post("/clusters", ensureAuth, clustersController.getClusters);
-// DELETE to remove cluster
-// router.delete("/clusters", ensureAuth, clustersController.getClusters);
+// GET page to manage groups
+router.get('/groups', ensureAuth, groupsController.getGroups)
+// POST to join new group
+// router.post("/groups", ensureAuth, groupsController.getGroups);
+// DELETE to remove group
+// router.delete("/groups", ensureAuth, groupsController.getGroups);
 
 // GET profile page
 router.get('/profile', ensureAuth, profileController.getProfile)
