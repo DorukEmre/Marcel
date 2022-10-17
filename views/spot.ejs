@@ -9,7 +9,7 @@
   <main id="spot-page">
     <section class="login-container">
       <div class="login-logo-container">
-        <a href="#"><img src="assets/demo-Snap-a-cat.jpg" alt="cat logo"></a>
+        <img src="/assets/demo-Snap-a-cat.jpg" alt="cat logo">
       </div>
       <section class="form-panel">
         <h2>Snap a cat</h2>
@@ -22,10 +22,18 @@
             <label for="comment"">Add a comment</label>
             <textarea id="comment" name="comment" placeholder="Add a comment"></textarea>
           </div>
-          <div class="form-group">
-            <label for="imgUpload"">Image</label>
-            <input type="file" id="imageUpload" name="file">
+
+          <div class="form-group file-upload-wrapper">
+            <div>
+              <label for="imageUpload"">Add a file</label>
+              <button for="imageUpload" id="custom-file-upload" type="button">
+                <img src="/assets/marcel-file-upload.svg" alt="" height="75" width="75">
+                <input type="file" id="imageUpload" name="file" accept="image/*" tabindex="-1">
+              </button>
+            </div>
+            <output id="file-list" for="imageUpload"></output>
           </div>
+
           <button type="submit" value="Upload">Submit</button>
         </form>
       </section>

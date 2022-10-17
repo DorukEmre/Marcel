@@ -79,6 +79,22 @@ if (document.querySelector('#feed-page')) {
   }
 }
 
+// Display file names on file upload
+if (document.querySelector('#spot-page')) {
+  const output = document.getElementById('file-list')
+  const filepicker = document.getElementById('imageUpload')
+
+  filepicker.addEventListener('change', (event) => {
+    const files = event.target.files
+    output.textContent = ''
+
+    for (const file of files) {
+      // output.textContent += `${file.name}: ${file.type || 'unknown'}\n`
+      output.textContent += `${file.name}\r\n`
+    }
+  })
+}
+
 // Modal for Groups page
 
 // if (document.querySelector('#groups-page')) {
