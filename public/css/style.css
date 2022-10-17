@@ -274,6 +274,7 @@ main {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  /* flex-direction: column; */
   gap: 1em;
 }
 
@@ -281,11 +282,20 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  max-width: 250px;
+  max-width: 470px;
+  min-width: 300px;
+  flex: 1 1 300px;
   border: 1px solid var(--clr-neutral-600);
-  padding: 0.5em;
-  box-shadow: 1px 1px 5px var(--clr-back-400);
-  border-radius: 5px;
+  padding: 0.5em 0;
+  box-shadow: 0 0 3px var(--clr-back-400);
+  border-radius: 10px;
+  margin: 0 auto;
+}
+.card--title-container {
+  padding: 0 0.75rem;
+}
+.card--title-container h4 {
+  font-weight: 400;
 }
 .card--image-container {
   width: 100%;
@@ -297,10 +307,11 @@ main {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 1em;
+  gap: 0.5em;
+  padding: 0 0.75rem;
 }
-form.like-button {
-  width: fit-content;
+span.like-number {
+  min-width: 17.5px;
 }
 button.like-button,
 button.open-comments,
@@ -310,6 +321,7 @@ button.close-button {
   border: none;
   transition: background-color 150ms ease-in;
   border-radius: 5px;
+  padding: 4px;
 }
 button.like-button:hover,
 button.open-comments:hover,
@@ -323,6 +335,7 @@ button.close-button:hover {
   align-items: center;
   gap: 1em;
   margin-top: auto;
+  padding: 0 0.75rem;
 }
 
 .modal {
@@ -331,6 +344,7 @@ button.close-button:hover {
   max-height: 90vh;  
   min-width: 300px;
   border: 1px solid var(--clr-neutral-600);
+  border-radius: 10px;
   box-shadow: 0 0 1em rgb(0 0 0 / .3);
   background-color: var(--clr-back-300);
   color: var(--clr-neutral-300);
@@ -580,18 +594,30 @@ output#file-list {
   font-size: 0.8rem;
   white-space: pre-line;
 }
+.spot-logo-container {
+  height: 200px;
+  padding-bottom: 2rem;
+}
+.spot-logo-container img {
+  max-height: 100%;
+  margin: 0 auto;
+}
 
 /* ////////////////////// */
 /*   Log-in and Sign-up   */
 /* ////////////////////// */
 .login-container,
-.signup-container {
+.signup-container,
+.spot-container {
   display: flex;
   flex-direction: column;
   max-width: 430px;
   margin: 0 auto 2rem;
-  padding-top: 4rem;
   text-align: center;
+}
+.login-container,
+.signup-container {
+  padding-top: 4rem;
 }
 .login-logo-container,
 .signup-logo-container {

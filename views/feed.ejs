@@ -37,7 +37,9 @@
       <ul class="cards-container">
         <% for(var i = 0; i < posts.length; i++) { %>
           <li class="card">
-            <p><%= posts[i].catName%> by <%= posts[i].user.userName%></p>
+            <section class="card--title-container">
+              <h4><%= posts[i].catName%> by <%= posts[i].user.userName%></h4>
+            </section>
             <a class="card--image-container" href="/posts/<%= posts[i]._id%>">
               <img class="" src="<%= posts[i].imageUrl%>">
             </a>
@@ -60,7 +62,7 @@
             <section class="card--comments-container">
               <p class="caption"><%= posts[i].caption%></p>
               <button class="open-comments" data-id="<%= posts[i]._id%>">
-                <img src="/assets/icons/comment_FILL1_wght400_GRAD0_opsz48.svg" alt="" height="24px" width="24px">
+                <img src="/assets/icons/comment_FILL0_wght600_GRAD0_opsz48.svg" alt="" height="24px" width="24px">
               </button>
             </section>
           </li>
@@ -68,8 +70,6 @@
         </ul>
     </div>
     
-    <p>It will eventually look like this:</p>
-    <img src="assets/demo-Feed.jpg" alt="">
   </main>
 
   <footer>
