@@ -15,7 +15,7 @@
             <h3 class="picBy"></h3>
           </div>
           <button class="btn close-button">
-            <img class="" src="/assets/icons/close_FILL0_wght400_GRAD0_opsz48.svg" height="24px" width="24px">
+            <img class="" src="/assets/icons/close_FILL0_wght600_GRAD0_opsz48.svg" height="24px" width="24px">
           </button>
         </section>
         
@@ -51,7 +51,7 @@
                   <% if ((posts[i].greatCat.find((x) => x == user.id) != undefined)) { %>
                     <img class="" src="/assets/icons/like-true.svg" height="24px" width="24px">
                   <% } else { %>
-                    <img class="" src="/assets/icons/like-false.svg" height="24px" width="24px">
+                    <img class="" src="/assets/icons/like-false-600.svg" height="24px" width="24px">
                   <% } %>
                 </button>
               </form>                  
@@ -60,7 +60,7 @@
             <section class="card--comments-container">
               <p class="caption"><%= posts[i].caption%></p>
               <button class="open-comments" data-id="<%= posts[i]._id%>">
-                <img src="/assets/icons/comment_FILL0_wght400_GRAD0_opsz48.svg" alt="" height="24px" width="24px">
+                <img src="/assets/icons/comment_FILL1_wght400_GRAD0_opsz48.svg" alt="" height="24px" width="24px">
               </button>
             </section>
           </li>

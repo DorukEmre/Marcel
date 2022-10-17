@@ -97,7 +97,8 @@ select {
   
   --clr-accent-300: #8ab7ff; /* hsl(217, 100%, 77%) */
   --clr-accent-400: #82a1d4; /* hsl(217, 49%, 67%) */
-  
+
+  --clr-neutral-200: #e9e9ed; /* hsl(240, 10%, 92%) */
   --clr-neutral-300: #d6e6ff; /* hsl(217, 100%, 92%) */
   --clr-neutral-400: #a2b7cd; /* hsl(211, 30%, 72%) */
   --clr-neutral-600: #546a83; /* hsl(212, 22%, 42%) */
@@ -301,12 +302,20 @@ main {
 form.like-button {
   width: fit-content;
 }
-button.like-button {
-  /* background-color: transparent; */
-  transition: transform 150ms ease-in;
+button.like-button,
+button.open-comments,
+button.send-button,
+button.close-button {
+  background-color: transparent;
+  border: none;
+  transition: background-color 150ms ease-in;
+  border-radius: 5px;
 }
-button.like-button:hover {
-  transform: scale(1.07);
+button.like-button:hover,
+button.open-comments:hover,
+button.send-button:hover,
+button.close-button:hover {
+  background-color: var(--clr-neutral-600);
 }
 .card--comments-container {
   display: flex;
