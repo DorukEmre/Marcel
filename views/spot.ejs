@@ -16,16 +16,16 @@
         <form action="/posts/createPost" enctype="multipart/form-data" method="POST">
           <div class="form-group">
             <label for="catName">Name of the cat (or your best nickname)</label>
-            <input type="text"" id="catName" name="catName" placeholder="Name">
+            <input type="text" id="catName" name="catName" placeholder="Name">
           </div>
           <div class="form-group">
-            <label for="comment"">Add a comment</label>
+            <label for="comment">Add a comment</label>
             <textarea id="comment" name="comment" placeholder="Add a comment"></textarea>
           </div>
 
           <div class="form-group file-upload-wrapper">
             <div>
-              <label for="imageUpload"">Add a file</label>
+              <label for="imageUpload">Add a file</label>
               <button for="imageUpload" id="custom-file-upload" type="button">
                 <img src="/assets/marcel-file-upload.svg" alt="" height="75" width="75">
                 <input type="file" id="imageUpload" name="file" accept="image/*" tabindex="-1">
