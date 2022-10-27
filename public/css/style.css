@@ -158,7 +158,7 @@ main {
   /* width: 100vw; */
   height: 91px;
 }
-.header-ul {
+.header-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -168,7 +168,7 @@ main {
   padding: 0 32px;
   margin: 0 auto;
 }
-.header-li {
+.header-item {
   min-width: 60px;
   max-width: calc(100% - 65px);
   flex-grow: 1;  
@@ -186,33 +186,33 @@ main {
 .nav-icon {
   margin: 0 auto;
 }
-.header-ul.new-session {
+.header-list.new-session {
   justify-content: flex-end;
 }
-.header-li.login,
-.header-li.signup {
+.header-item.login,
+.header-item.signup {
   max-width: 80px;
   padding-top: 0px;
 }
-.header-li.login a {
+.header-item.login a {
   color: var(--clr-accent-300);
   padding: 10px;
 }
-.header-li.signup a {
+.header-item.signup a {
   color: var(--clr-back-300);
   background-color: var(--clr-accent-300);
   padding: 10px;
   border-radius: 5px;
 }
-.header-li.login:hover a {
+.header-item.login:hover a {
   color: var(--clr-accent-400);
   transition-duration: 0.2s;
 }
-.header-li.signup:hover a {
+.header-item.signup:hover a {
   background-color: var(--clr-accent-400); 
   transition-duration: 0.2s; 
 }
-.header-li.logout {
+.header-item.logout {
   width: 20px;
   min-width: 20px;
   flex-grow: 0;
@@ -221,7 +221,7 @@ main {
   display: inline-block;
   height: 100%;
 }
-.header-li.active {
+.header-item.active {
   border-bottom: 3px solid var(--clr-accent-300);
 }
 .header-navbar a.active {

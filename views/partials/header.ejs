@@ -1,58 +1,58 @@
 <nav class="header-navbar">
   <% if (currentUser) {%>
-    <ul class="header-ul">
-      <li class="header-li demo" style="max-width: 80px; background-color: rgb(53, 35, 0);">
+    <ul class="header-list">
+      <li class="header-item demo" style="max-width: 80px; background-color: rgb(53, 35, 0);">
         <a href="/demo" style="color: orange;">DEMO LINK</a>
       </li>
 
-      <li class="header-li <%= active[0] %>">
+      <li class="header-item <%= active[0] %>">
         <a href="/feed" class="<%= active[0] %>">
           <img src="/assets/nav_icons/pets_FILL1_wght400_GRAD0_opsz48-<%= active[0] %>.svg" alt="" class="nav-icon">
           <p>Feed</p>
         </a>
       </li>
 
-      <li class="header-li <%= active[1] %>">
+      <li class="header-item <%= active[1] %>">
         <a href="/explore" class="<%= active[1] %>">
           <img src="/assets/nav_icons/explore_FILL1_wght400_GRAD0_opsz48-<%= active[1] %>.svg" alt="" class="nav-icon">
           <p>Explore</p>
         </a>
       </li>
 
-      <li class="header-li <%= active[2] %>">
+      <li class="header-item <%= active[2] %>">
         <a href="/spot" class="<%= active[2] %>">
           <img src="/assets/nav_icons/photo_camera_FILL1_wght400_GRAD0_opsz48-<%= active[2] %>.svg" alt="" class="nav-icon">
           <p>Spot</p>
         </a>
       </li>
 
-      <li class="header-li <%= active[3] %>">
+      <li class="header-item <%= active[3] %>">
         <a href="/groups" class="<%= active[3] %>">
           <img src="/assets/nav_icons/groups_FILL1_wght400_GRAD0_opsz48-<%= active[3] %>.svg" alt="" class="nav-icon">
           <p>Groups</p>
         </a>
       </li>
 
-      <li class="header-li <%= active[4] %>">
+      <li class="header-item <%= active[4] %>">
         <a href="/profile" class="<%= active[4] %>">
           <img src="/assets/nav_icons/account_circle_FILL1_wght400_GRAD0_opsz48-<%= active[4] %>.svg" alt="" class="nav-icon">
           <p>Profile</p>
         </a>
       </li>
 
-      <li class="header-li logout">
+      <li class="header-item logout">
         <a href="/logout" class="logout-link">LOG OUT</a>
       </li>
     </ul>
 <% } else { %>
-    <ul class="header-ul new-session">
-      <li class="header-li demo" style="max-width: 80px; margin-right: auto; background-color: rgb(53, 35, 0);">
+    <ul class="header-list new-session">
+      <li class="header-item demo" style="max-width: 80px; margin-right: auto; background-color: rgb(53, 35, 0);">
         <a href="/demo" style="color: orange;">DEMO LINK</a>
       </li>
-      <li class="header-li login">
+      <li class="header-item login">
         <a href="/login" class="">Log in</a>
       </li>
-      <li class="header-li signup">
+      <li class="header-item signup">
         <a href="/signup" class="">Sign up</a>
       </li>
     </ul>
